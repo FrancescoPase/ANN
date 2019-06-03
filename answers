@@ -1,0 +1,11 @@
+Question 1: Why is it better to sample an action from the softmax distribution rather than just pick the action with highest probability?
+
+Answer:
+
+It is in response to the exploration/exploitatoin tradeoff as seen also in the Multi Armed Bandit scenario. Sampling from the softmax layer will of course lead to encourage the action with highest probability (best until now) but it allows to explore also other actions that could emerge to be the best by sampling future episodes.
+
+Question 2: In the train method above we throw away the data from an episode after we use it to train the network (make sure that you do that). Why is it not a good idea to keep the old episodes in our data and train the policy network on both old and new data? (Note: Reusing data can still be possible but requires modifications to the REINFORCE algorithm we are using).
+
+Answer:
+
+The idea of Monte Carlo Sampling method for the episodes is to approximate the avergae return of a state given that a certain actoin has bee taken. By the law of large numbers it should converge to real value and so it is important that these samples are independent, but this is not true anymore if the same episode is counted in many samples.
